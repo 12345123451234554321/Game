@@ -7,13 +7,22 @@
 		<title>Document</title>
 	</head>
 	<body>
-		У вас ручек: <span id="mainCnt">0</span>
+		У вас ручек: <span id="mainCnt"></span>
+		<br>
+		Вы получаете <span id="mainPs"></span> ручек за секунду
 		<br>
 		<br>
-		<button onclick="mainBtnClick()">Получи ручку</button>
+		<button id="mainBtn" onclick="mainBtnClick()"><img src="https://as2.ftcdn.net/v2/jpg/02/79/88/85/1000_F_279888525_v4RcyaUJLFiDLveE7QciaH2e5BJh1Lfm.jpg" alt="Получи ручку" width="200" height="200"></button>
 		<br>
 		<br>
-		У вас есть <span id="am1"></span> курсоров.	Цена курсора <span id="pr1"></span> ручек. <button onclick="buy1()">Купить курсор</button>
+		У вас рук: <span id="am1"></span>. Цена руки: <span id="pr1"></span> ручек. <button onclick="bil1.buy()">Купить руку</button>
+		<br>
+		<br>
+		У вас бабушек: <span id="am2"></span>. Цена курсора: <span id="pr2"></span> ручек. <button onclick="bil2.buy()">Купить бабушку</button>
+		<br>
+
+		<br>
+		У вас цехов: <span id="am3"></span>. Цена цеха: <span id="pr3"></span> ручек. <button onclick="bil3.buy()">Купить цех</button>
 		<script src=".\break_eternity.js-master\break_eternity.js"></script>
 		<script src="script.js"></script>
 	</body>
