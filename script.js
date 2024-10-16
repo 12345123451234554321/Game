@@ -38,8 +38,8 @@ function buy1() {
 }
 
 let savegame = JSON.parse(localStorage.getItem("save"));
-//if (typeof savegame?.pens !== ("undefined" || "null")) {pens = savegame.pens};
-//if (typeof savegame?.bil1 !== ("undefined" || "null")) {bil1.amount = new Decimal(savegame.bil1)};
+if (typeof savegame?.pens !== ("undefined" || "null")) {pens = new Decimal(savegame.pens)};
+if (typeof savegame?.bil1 !== ("undefined" || "null")) {bil1.amount = new Decimal(savegame.bil1)};
 
 window.setInterval(function(){
 	pens = pens.add(bil1.pp10ms())
