@@ -56,4 +56,4 @@ window.setInterval(function(){
 	}
 	localStorage.setItem("save",JSON.stringify(save));
 	
-}, 30000);
+}, 3000);
