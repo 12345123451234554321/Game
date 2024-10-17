@@ -1,5 +1,7 @@
 let pens = new Decimal("0");
 let byClick = new Decimal("1");
+let formLvl = 0;
+let formX = 1;
 
 class Building {
 	constructor(amount, basePrice, n, priceIncreasePerN, basePps, ppsIncreasePerN, priceIncrease) {
@@ -36,12 +38,33 @@ class Building {
 let bil1 = new Building(new Decimal("0"), new Decimal("15"), new Decimal("10"), new Decimal("2.1"), new Decimal("0.1"), new Decimal("2"), new Decimal("1.15"))
 let bil2 = new Building(new Decimal("0"), new Decimal("100"), new Decimal("10"), new Decimal("2.1"), new Decimal("1"), new Decimal("2"), new Decimal("1.15"))
 let bil3 = new Building(new Decimal("0"), new Decimal("1000"), new Decimal("10"), new Decimal("2.1"), new Decimal("8"), new Decimal("2"), new Decimal("1.15"))
-let bilp1 = new Building(new Decimal("0"), new Decimal("10"), new Decimal("10"), new Decimal("1"), new Decimal("0.0001"), new Decimal("1"), new Decimal("1.20"))
-let bilp2 = new Building(new Decimal("0"), new Decimal("100"), new Decimal("10"), new Decimal("1"), new Decimal("0.0001"), new Decimal("1"), new Decimal("1.20"))
-let bilp3 = new Building(new Decimal("0"), new Decimal("1000"), new Decimal("10"), new Decimal("1"), new Decimal("0.0001"), new Decimal("1"), new Decimal("1.20"))
+let bilp1 = new Building(new Decimal("0"), new Decimal("10"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
+let bilp2 = new Building(new Decimal("0"), new Decimal("100"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
+let bilp3 = new Building(new Decimal("0"), new Decimal("1000"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
 
 function mainBtnClick() {
 	pens = pens.add(byClick);
+}
+
+function clickUpgrade() {
+	let cost = new Decimal(new Decimal("1.15").pow(formX));
+	if(pens.gte(cost)) {
+		pens = pens.sub(cost);
+		formX = formX + 0.1; 
+		if(formLvl === 0) {
+			byClick = new Decimal(formX);
+		} else if (formLvl === 1) {
+			byClick = new Decimal(bil1.amount.div("0.1").mul(formX));
+		}
+	}
+}
+
+function formUpgrade() {
+	let cost = new Decimal(new Decimal("1000").pow(new Decimal(formLvl).add(new Decimal("1"))));
+	if(pens.gte(cost)) {
+		pens = pens.sub(cost);
+		formLvl =+ 1;
+	}
 }
 
 let savegame = JSON.parse(localStorage.getItem("save"));
@@ -73,6 +96,10 @@ function updateGame(delta_time, total_time) {
 	bil3.setAmt(bil3.amount.add(bilp3.ppms().mul(delta_time)));
 	document.getElementById('amp3').innerHTML = bilp3.amount.toFixed(0);
 	document.getElementById('prp3').innerHTML = bilp3.price().round();
+	document.getElementById('clickLvl').innerHTML = formX.toFixed(0);
+	document.getElementById('clickLvlp').innerHTML = new Decimal(new Decimal("2").pow(formX)).toFixed(0);
+	document.getElementById('formulLvl').innerHTML = formLvl.toFixed(0);
+	document.getElementById('formulLvlp').innerHTML = new Decimal(new Decimal("1000").pow(new Decimal(formLvl).add(new Decimal("1")))).toFixed(0);
 }
 
 let last_time = null;
