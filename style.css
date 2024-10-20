@@ -1,3 +1,12 @@
 #mainCnt {
     color: darkblue;
 }
+.main {
+    display: block;
+}
+.saving {
+    display: none;
+}
+.upgrade {
+    display: none;
+}

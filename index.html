@@ -7,36 +7,48 @@
 		<title>Document</title>
 	</head>
 	<body>
-		У вас ручек: <span id="mainCnt"></span>
-		<br>
-		Вы получаете <span id="mainPs"></span> ручек за секунду
-		<hr>
-		<button id="mainBtn" onclick="mainBtnClick()"><img src="https://as2.ftcdn.net/v2/jpg/02/79/88/85/1000_F_279888525_v4RcyaUJLFiDLveE7QciaH2e5BJh1Lfm.jpg" alt="Получи ручку" width="200" height="200"></button>
-		<hr>
-		<h2>Улучшение кликов</h2>
-		Уровень клика: <span id="clickLvl"></span> Цена улучшения: <span id="clickLvlp"></span> <button onclick="clickUpgrade()">Улучшить клик</button>
-		<br>
-		<br>
-		Уровень формулы клика: <span id="formulLvl"></span> </span> Цена улучшения: <span id="formulLvlp"></span> <button onclick="formUpgrade()">Улучшить формулу клика</button>
-		<hr>
-		<h2>Постройки</h2>
-		У вас рук: <span id="am1"></span>. Цена руки: <span id="pr1"></span> ручек. <button onclick="bil1.buy()">Купить руку</button>
-		<br>
-		<br>
-		У вас бабушек: <span id="am2"></span>. Цена бабушки: <span id="pr2"></span> ручек. <button onclick="bil2.buy()">Купить бабушку</button>
-		<br>
-		<br>
-		У вас цехов: <span id="am3"></span>. Цена цеха: <span id="pr3"></span> ручек. <button onclick="bil3.buy()">Купить цех</button>
-		<hr>
-		<h2>Производство построек</h2>
-		У вас производств рук: <span id="amp1"></span>. Цена производства руки: <span id="prp1"></span> ручек. <button onclick="bilp1.buy()">Купить производство руки</button>
-		<br>
-		<br>
-		У вас производств бабушек: <span id="amp2"></span>. Цена производства курсора: <span id="prp2"></span> ручек. <button onclick="bilp2.buy()">Купить производство бабушек</button>
-		<br>
-		<br>
-		У вас производств цехов: <span id="amp3"></span>. Цена производста цеха: <span id="prp3"></span> ручек. <button onclick="bilp3.buy()">Купить производство цехов</button>
-		<script src=".\break_eternity.js-master\break_eternity.js"></script>
+		<nav>
+			У вас ручек: <span id="mainCnt"></span>
+			<br>
+			Вы получаете <span id="mainPs"></span> ручек за секунду
+			<hr>
+			<button id="swMain" onclick="swMain()">Главное</button>
+			<button id="swUpgrade" onclick="swUpgrade()">Улучшения</button>
+			<button id="swSaving" onclick="swSaving()">Сохранения</button>
+			<hr>
+		</nav>
+		<div class="main">
+			<button id="mainBtn" onclick="mainBtnClick()"><img src="https://as2.ftcdn.net/v2/jpg/02/79/88/85/1000_F_279888525_v4RcyaUJLFiDLveE7QciaH2e5BJh1Lfm.jpg" alt="Получи ручку" width="200" height="200"></button>
+			<hr>
+			<h2>Улучшение клика</h2>
+			Уровень клика: <span id="clickLvl"></span> Цена улучшения: <span id="clickLvlp"></span> <button onclick="clickUpgrade()">Улучшить клик</button>
+			<br>
+			<br>
+			Уровень формулы ручек за клик: <span id="formulLvl"></span>. <span id="formu1"> Цена улучшения: <span id="formulLvlp"></span> ручек.</span> Формула ручек за клик: <span id="formul"></span> <div id="formu2"><button onclick="formUpgrade()">Улучшить формулу ручек за клик</button></div>
+			<hr>
+			<h2>Постройки</h2>
+			У вас рук: <span id="am1"></span>. Цена руки: <span id="pr1"></span> ручек. <button onclick="bil1.buy()">Купить руку</button>
+			<br>
+			<br>
+			У вас бабушек: <span id="am2"></span>. Цена бабушки: <span id="pr2"></span> ручек. <button onclick="bil2.buy()">Купить бабушку</button>
+			<br>
+			<br>
+			У вас цехов: <span id="am3"></span>. Цена цеха: <span id="pr3"></span> ручек. <button onclick="bil3.buy()">Купить цех</button>
+			<hr>
+			<h2>Производство построек</h2>
+			У вас производств рук: <span id="amp1"></span>. Цена производства руки: <span id="prp1"></span> ручек. <button onclick="bilp1.buy()">Купить производство руки</button>
+			<br>
+			<br>
+			У вас производств бабушек: <span id="amp2"></span>. Цена производства курсора: <span id="prp2"></span> ручек. <button onclick="bilp2.buy()">Купить производство бабушек</button>
+			<br>
+			<br>
+			У вас производств цехов: <span id="amp3"></span>. Цена производста цеха: <span id="prp3"></span> ручек. <button onclick="bilp3.buy()">Купить производство цехов</button>
+		</div>
+		<div class="saving">Идёт разработка...</div>
+		<div class="upgrade">
+			У вас улучшений: <span id="up1amt"></span> Цена улучшения: <span id="up1pr"></span> <button onclick="up1()">Улучшить всё</button>
+		</div>
+		<script src="./break_eternity.js-master/break_eternity.js"></script>
 		<script src="script.js"></script>
 	</body>
 </html>
