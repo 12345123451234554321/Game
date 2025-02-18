@@ -114,7 +114,7 @@ function up1() {
 }
 
 let savegame = JSON.parse(localStorage.getItem("save"));
-if (savegame.chksum === getHash(JSON.stringify(savegame.pens + savegame.bil1amt + savegame.bil2amt + savegame.bil3amt + savegame.bilp1amt + savegame.bilp2amt + savegame.bilp3amt + savegame.formLvl + savegame.formX))) {
+//if (savegame.chksum === getHash(JSON.stringify(savegame.pens + savegame.bil1amt + savegame.bil2amt + savegame.bil3amt + savegame.bilp1amt + savegame.bilp2amt + savegame.bilp3amt + savegame.formLvl + savegame.formX))) {
 	if (typeof savegame?.pens !== ("undefined" || "null")) {pens = new Decimal(savegame.pens)};
 	if (typeof savegame?.bil1amt !== ("undefined" || "null")) {bil1.setAmt(new Decimal(savegame.bil1amt))};
 	if (typeof savegame?.bil2amt !== ("undefined" || "null")) {bil2.setAmt(new Decimal(savegame.bil2amt))};
@@ -126,7 +126,7 @@ if (savegame.chksum === getHash(JSON.stringify(savegame.pens + savegame.bil1amt 
 	if (typeof savegame?.bilp4amt !== ("undefined" || "null")) {bilp4.setAmt(new Decimal(savegame.bilp4amt))};
 	if (typeof savegame?.formLvl !== ("undefined" || "null")) {formLvl = savegame.formLvl};
 	if (typeof savegame?.formX !== ("undefined" || "null")) {formX = savegame.formX};
-}
+//}
 
 function updateGame(delta_time, total_time) {
 	pens = pens.add(bil1.ppms().mul(delta_time).add(bil2.ppms().mul(delta_time).add(bil3.ppms().mul(delta_time).add(bil4.ppms().mul(delta_time)).mul(new Decimal(2).pow(up1amt)))));
