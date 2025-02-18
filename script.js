@@ -113,7 +113,7 @@ function up1() {
 	};
 }
 
-let savegame = JSON.parse(localStorage.getItem("save"));
+let savegame = JSON.parse(atob(localStorage.getItem("save")));
 //if (savegame.chksum === getHash(JSON.stringify(savegame.pens + savegame.bil1amt + savegame.bil2amt + savegame.bil3amt + savegame.bilp1amt + savegame.bilp2amt + savegame.bilp3amt + savegame.formLvl + savegame.formX))) {
 	if (typeof savegame?.pens !== ("undefined" || "null")) {pens = new Decimal(savegame.pens)};
 	if (typeof savegame?.bil1amt !== ("undefined" || "null")) {bil1.setAmt(new Decimal(savegame.bil1amt))};
@@ -179,7 +179,13 @@ setInterval(function gameLoop() {
 }, 20);
 
 window.setInterval(function(){
-	let save = {
+	
+	localStorage.setItem("save", getSave());
+	
+}, 5000);
+
+function getSave() {
+	return btoa(JSON.stringify({//не забыть цикл сохранения!!!!!!!!!!!
 		pens: new Decimal(pens),
 		bil1amt: new Decimal(bil1.amount),
 		bil2amt: new Decimal(bil2.amount),
@@ -191,8 +197,44 @@ window.setInterval(function(){
 		bilp4amt: new Decimal(bilp4.amount).round(),
 		formLvl: formLvl,
 		formX: formX,
-		//chksum: getHash(JSON.stringify(new Decimal(pens) + new Decimal(bil1.amount) + new Decimal(bil2.amount) + new Decimal(bil3.amount) + new Decimal(bilp1.amount).round() + new Decimal(bilp2.amount).round() + new Decimal(bilp3.amount).round() + formLvl + formX)),
-	}
-	localStorage.setItem("save", JSON.stringify(save));
-	
-}, 5000);
+	}))
+}
+
+function exportSave() {
+	document.getElementById("saveOut").value = getSave()
+}
+
+function importSave() {
+	let savegame = JSON.parse(atob(document.getElementById("saveIn").value));
+	if (typeof savegame?.pens !== ("undefined" || "null")) {pens = new Decimal(savegame.pens)};
+	if (typeof savegame?.bil1amt !== ("undefined" || "null")) {bil1.setAmt(new Decimal(savegame.bil1amt))};
+	if (typeof savegame?.bil2amt !== ("undefined" || "null")) {bil2.setAmt(new Decimal(savegame.bil2amt))};
+	if (typeof savegame?.bil3amt !== ("undefined" || "null")) {bil3.setAmt(new Decimal(savegame.bil3amt))};
+	if (typeof savegame?.bil4amt !== ("undefined" || "null")) {bil4.setAmt(new Decimal(savegame.bil4amt))};
+	if (typeof savegame?.bilp1amt !== ("undefined" || "null")) {bilp1.setAmt(new Decimal(savegame.bilp1amt))};
+	if (typeof savegame?.bilp2amt !== ("undefined" || "null")) {bilp2.setAmt(new Decimal(savegame.bilp2amt))};
+	if (typeof savegame?.bilp3amt !== ("undefined" || "null")) {bilp3.setAmt(new Decimal(savegame.bilp3amt))};
+	if (typeof savegame?.bilp4amt !== ("undefined" || "null")) {bilp4.setAmt(new Decimal(savegame.bilp4amt))};
+	if (typeof savegame?.formLvl !== ("undefined" || "null")) {formLvl = savegame.formLvl};
+	if (typeof savegame?.formX !== ("undefined" || "null")) {formX = savegame.formX};
+}
+
+function wipeButt() {
+	let confirmation = confirm("Потвердите сброс сохраниения. ВОССТАНОВИТЬ ПРОГРЕСС БУДЕТ НЕВОЗМОЖНО!");
+	if (confirmation) {
+		pens = new Decimal("0");
+		byClick = new Decimal("1");
+		up1amt = new Decimal("0");
+		formLvl = 1;
+		formX = 1;
+		bil1 = new Building(new Decimal("0"), new Decimal("15"), new Decimal("10"), new Decimal("2.1"), new Decimal("0.1"), new Decimal("2"), new Decimal("1.15"))
+		bil2 = new Building(new Decimal("0"), new Decimal("100"), new Decimal("10"), new Decimal("2.1"), new Decimal("1"), new Decimal("2"), new Decimal("1.15"))
+		bil3 = new Building(new Decimal("0"), new Decimal("1000"), new Decimal("10"), new Decimal("2.1"), new Decimal("8"), new Decimal("2"), new Decimal("1.15"))
+		bil4 = new Building(new Decimal("0"), new Decimal("11000"), new Decimal("10"), new Decimal("2.1"), new Decimal("47"), new Decimal("2"), new Decimal("1.15"))
+		bilp1 = new Building(new Decimal("0"), new Decimal("10"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
+		bilp2 = new Building(new Decimal("0"), new Decimal("100"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
+		bilp3 = new Building(new Decimal("0"), new Decimal("1000"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
+		bilp4 = new Building(new Decimal("0"), new Decimal("10000"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
+		localStorage.setItem("save", getSave());
+	} else {return}
+}

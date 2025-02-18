@@ -50,7 +50,15 @@
 			<br>
 			У вас производств фабрик: <span id="amp4"></span>. Цена производства фабрик: <span id="prp4"></span> ручек. <button onclick="bilp4.buy()">Купить производство фабрик</button>
 		</div>
-		<div class="saving">Идёт разработка...</div>
+		<div class="saving">
+			Введите сохранение:<input type="text" name="saveIn" id="saveIn"><input type="button" value="Импортировать" onclick="importSave()">
+			<br>
+			<br>
+			Ваше сохранение:<input type="text" name="saveOut" id="saveOut"><input type="button" value="Экспортировать" onclick="exportSave()">
+			<br>
+			<br>
+			<input type="button" value="Полный сброс" class="dangButt" onclick="wipeButt()">
+		</div>
 		<div class="upgrade">
 			У вас улучшений: <span id="up1amt"></span> Цена улучшения: <span id="up1pr"></span> <button onclick="up1()">Улучшить всё</button>
 		</div>
