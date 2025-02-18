@@ -39,9 +39,11 @@ class Building {
 let bil1 = new Building(new Decimal("0"), new Decimal("15"), new Decimal("10"), new Decimal("2.1"), new Decimal("0.1"), new Decimal("2"), new Decimal("1.15"))
 let bil2 = new Building(new Decimal("0"), new Decimal("100"), new Decimal("10"), new Decimal("2.1"), new Decimal("1"), new Decimal("2"), new Decimal("1.15"))
 let bil3 = new Building(new Decimal("0"), new Decimal("1000"), new Decimal("10"), new Decimal("2.1"), new Decimal("8"), new Decimal("2"), new Decimal("1.15"))
+let bil4 = new Building(new Decimal("0"), new Decimal("11000"), new Decimal("10"), new Decimal("2.1"), new Decimal("47"), new Decimal("2"), new Decimal("1.15"))
 let bilp1 = new Building(new Decimal("0"), new Decimal("10"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
 let bilp2 = new Building(new Decimal("0"), new Decimal("100"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
 let bilp3 = new Building(new Decimal("0"), new Decimal("1000"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
+let bilp4 = new Building(new Decimal("0"), new Decimal("10000"), new Decimal("10"), new Decimal("1"), new Decimal("0.0003"), new Decimal("1"), new Decimal("1.20"))
 
 function getHash(str, algo = "SHA-512") {
 	let strBuf = new TextEncoder().encode(str);
@@ -117,16 +119,18 @@ if (savegame.chksum === getHash(JSON.stringify(savegame.pens + savegame.bil1amt 
 	if (typeof savegame?.bil1amt !== ("undefined" || "null")) {bil1.setAmt(new Decimal(savegame.bil1amt))};
 	if (typeof savegame?.bil2amt !== ("undefined" || "null")) {bil2.setAmt(new Decimal(savegame.bil2amt))};
 	if (typeof savegame?.bil3amt !== ("undefined" || "null")) {bil3.setAmt(new Decimal(savegame.bil3amt))};
+	if (typeof savegame?.bil4amt !== ("undefined" || "null")) {bil4.setAmt(new Decimal(savegame.bil4amt))};
 	if (typeof savegame?.bilp1amt !== ("undefined" || "null")) {bilp1.setAmt(new Decimal(savegame.bilp1amt))};
 	if (typeof savegame?.bilp2amt !== ("undefined" || "null")) {bilp2.setAmt(new Decimal(savegame.bilp2amt))};
 	if (typeof savegame?.bilp3amt !== ("undefined" || "null")) {bilp3.setAmt(new Decimal(savegame.bilp3amt))};
+	if (typeof savegame?.bilp4amt !== ("undefined" || "null")) {bilp4.setAmt(new Decimal(savegame.bilp4amt))};
 	if (typeof savegame?.formLvl !== ("undefined" || "null")) {formLvl = savegame.formLvl};
 	if (typeof savegame?.formX !== ("undefined" || "null")) {formX = savegame.formX};
 }
 
 function updateGame(delta_time, total_time) {
-	pens = pens.add(bil1.ppms().mul(delta_time).add(bil2.ppms().mul(delta_time).add(bil3.ppms().mul(new Decimal(2).pow(up1amt)).mul(delta_time))));
-	pps = bil1.pps().add(bil2.pps().add(bil3.pps())).mul(new Decimal(2).pow(up1amt));
+	pens = pens.add(bil1.ppms().mul(delta_time).add(bil2.ppms().mul(delta_time).add(bil3.ppms().mul(delta_time).add(bil4.ppms().mul(delta_time)).mul(new Decimal(2).pow(up1amt)))));
+	pps = bil1.pps().add(bil2.pps().add(bil3.pps().add(bil4.pps()))).mul(new Decimal(2).pow(up1amt));
 	document.getElementById('mainCnt').innerHTML = pens.toFixed(3);
 	document.getElementById('mainPs').innerHTML = pps.toFixed(4);
 	document.getElementById('am1').innerHTML = bil1.amount.toFixed(3);
@@ -135,6 +139,8 @@ function updateGame(delta_time, total_time) {
 	document.getElementById('pr2').innerHTML = bil2.price().round();
 	document.getElementById('am3').innerHTML = bil3.amount.toFixed(3);
 	document.getElementById('pr3').innerHTML = bil3.price().round();
+	document.getElementById('am4').innerHTML = bil4.amount.toFixed(3);
+	document.getElementById('pr4').innerHTML = bil4.price().round();
 	bil1.setAmt(bil1.amount.add(bilp1.ppms().mul(delta_time)));
 	document.getElementById('amp1').innerHTML = bilp1.amount.toFixed(0);
 	document.getElementById('prp1').innerHTML = bilp1.price().round();
@@ -144,6 +150,9 @@ function updateGame(delta_time, total_time) {
 	bil3.setAmt(bil3.amount.add(bilp3.ppms().mul(delta_time)));
 	document.getElementById('amp3').innerHTML = bilp3.amount.toFixed(0);
 	document.getElementById('prp3').innerHTML = bilp3.price().round();
+	bil4.setAmt(bil4.amount.add(bilp4.ppms().mul(delta_time)));
+	document.getElementById('amp4').innerHTML = bilp4.amount.toFixed(0);
+	document.getElementById('prp4').innerHTML = bilp4.price().round();
 	document.getElementById('clickLvl').innerHTML = formX.toFixed(1);
 	document.getElementById('clickLvlp').innerHTML = new Decimal(new Decimal("1.15").pow(formX)).toFixed(1);
 	document.getElementById('formul').innerHTML = getForm(formLvl);
