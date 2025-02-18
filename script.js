@@ -184,12 +184,14 @@ window.setInterval(function(){
 		bil1amt: new Decimal(bil1.amount),
 		bil2amt: new Decimal(bil2.amount),
 		bil3amt: new Decimal(bil3.amount),
+		bil4amt: new Decimal(bilp4.amount),
 		bilp1amt: new Decimal(bilp1.amount).round(),
 		bilp2amt: new Decimal(bilp2.amount).round(),
 		bilp3amt: new Decimal(bilp3.amount).round(),
+		bilp4amt: new Decimal(bilp4.amount).round(),
 		formLvl: formLvl,
 		formX: formX,
-		chksum: getHash(JSON.stringify(new Decimal(pens) + new Decimal(bil1.amount) + new Decimal(bil2.amount) + new Decimal(bil3.amount) + new Decimal(bilp1.amount).round() + new Decimal(bilp2.amount).round() + new Decimal(bilp3.amount).round() + formLvl + formX)),
+		//chksum: getHash(JSON.stringify(new Decimal(pens) + new Decimal(bil1.amount) + new Decimal(bil2.amount) + new Decimal(bil3.amount) + new Decimal(bilp1.amount).round() + new Decimal(bilp2.amount).round() + new Decimal(bilp3.amount).round() + formLvl + formX)),
 	}
 	localStorage.setItem("save", JSON.stringify(save));
 	
