@@ -176,7 +176,7 @@ function updateGame(delta_time, total_time) {
 	bil5.setAmt(bil5.amount.add(bilp5.ppms().mul(delta_time)));
 	document.getElementById('amp5').innerHTML = bilp5.amount.toFixed(0);
 	document.getElementById('prp5').innerHTML = bilp5.price().round();
-	bil5.setAmt(bil6.amount.add(bilp6.ppms().mul(delta_time)));
+	bil6.setAmt(bil6.amount.add(bilp6.ppms().mul(delta_time)));
 	document.getElementById('amp6').innerHTML = bilp6.amount.toFixed(0);
 	document.getElementById('prp6').innerHTML = bilp6.price().round();
 	document.getElementById('clickLvl').innerHTML = formX.toFixed(1);
