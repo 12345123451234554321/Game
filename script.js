@@ -145,7 +145,7 @@ let savegame = JSON.parse(atob(localStorage.getItem("save")));
 function updateGame(delta_time, total_time) {
 	pens = pens.add(bil1.ppms().mul(delta_time)).add(bil2.ppms().mul(delta_time)).add(bil3.ppms().mul(delta_time)).add(bil4.ppms().mul(delta_time)).add(bil5.ppms().mul(delta_time)).add(bil6.ppms().mul(delta_time));
 	pps = bil1.pps().add(bil2.pps().add(bil3.pps().add(bil4.pps().add(bil5.pps().add(bil6.pps))))).mul(new Decimal(2).pow(up1amt));
-	pps2 = bilp1.pps().mul(bil1.ppsB()).add(bilp2.pps().mul(bil2.ppsB()).add(bilp3.pps().mul(bil3.ppsB())).add(bilp4.pps().mul(bil4.ppsB())).add(bilp5.pps().mul(bil5.ppsB())).add(bilp6.pps().mul(bil6.ppsB())))
+	pps2 = bilp1.pps().mul(bil1.ppsB().mul(new Decimal(2).pow(up1amt))).add(bilp2.pps().mul(bil2.ppsB().mul(new Decimal(2).pow(up1amt))).add(bilp3.pps().mul(bil3.ppsB().mul(new Decimal(2).pow(up1amt)))).add(bilp4.pps().mul(bil4.ppsB().mul(new Decimal(2).pow(up1amt)))).add(bilp5.pps().mul(bil5.ppsB().mul(new Decimal(2).pow(up1amt)))).add(bilp6.pps().mul(bil6.ppsB().mul(new Decimal(2).pow(up1amt)))))
 	document.getElementById('mainCnt').innerHTML = pens.toFixed(3);
 	document.getElementById('mainPs').innerHTML = pps.toFixed(4);
 	document.getElementById('mainA').innerHTML = pps2.toFixed(5);
