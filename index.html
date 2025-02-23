@@ -17,6 +17,7 @@
 			<button id="swMain" onclick="swMain()">Главное</button>
 			<button id="swUpgrade" onclick="swUpgrade()">Улучшения</button>
 			<button id="swSaving" onclick="swSaving()">Сохранения</button>
+			<button id="swAsc" onclick="swAsc()">Восхождения</button>
 			<hr>
 		</nav>
 		<div class="main">
@@ -87,7 +88,22 @@
 			<input type="button" value="Полный сброс" class="dangButt" onclick="wipeButt()">
 		</div>
 		<div class="upgrade">
+			<h3>Улучшение всех построек</h3>
+			<p>Пояснение: это улучшение увеличивает производство всех построек в 2 раза</p>
 			У вас улучшений: <span id="up1amt"></span> Цена улучшения: <span id="up1pr"></span> <button onclick="up1()">Улучшить всё</button>
+			<hr>
+			<h3>Часовое улучшение</h3>
+			<p>Пояснение: это улучшение умножает производство построек в соответствии с временем от *0.85 в 00:00 по UTC до *1.15 в 12:00 и обратно к *0.85 в 00:00 следующего дня по UTC</p>
+			<span id="clkBuy">Купить часовое улучшение за 10000000 ручек</span><span id="clkMult"></span> <input type="button" value="Купить" onclick="buyClk()" class="buyClk"> <input type="button" value="Включить улучшение" onclick="isOnClk=true" class="offOnClk"> <input type="button" value="Выключить улучшение" onclick="isOnClk=false" class="offOnClk">
+			<hr>
+			<h3>Улучшение производств построек</h3>
+			<p>Пояснение: это улучшение увеличивает базовое производство производств построек</p>
+			У вас улучшений производств построек: <span id="up2amt"></span>. Цена улучшения производств построек: <span id="up2pr"></span> <input type="button" value="Улучшить производства построек" onclick="up2()">
+		</div>
+		<div class="ascensions">
+			У вас очков восхождения: <span id="ascPts"></span>
+			<br>
+			Для восхождения нужно 1e100 ручек. <input type="button" value="Восхождение" onclick="ascend()">
 		</div>
 		<script src="./break_eternity.js-master/break_eternity.js"></script>
 		<script src="script.js"></script>

@@ -10,9 +10,15 @@
 .upgrade {
     display: none;
 }
+.ascensions {
+    display: none;
+}
 html {
     font-family: Arial, Helvetica, sans-serif;
 }
 .dangButt {
     color: red;
+}
+.offOnClk {
+    display: none;
 }
