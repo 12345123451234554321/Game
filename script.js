@@ -257,8 +257,9 @@ function getMultOff(dt) {
 	if (isAffClk) {
 		if (isOnClk) {
 			dt = dt / (3600000) // в часы
+			t = dt
 			dt = dt - (Math.floor(dt / 12) * 12);
-			mult = mult.mul((Math.floor(dt / 12) + ((0.3*dt + 10.2)/12))/(Math.floor(dt / 12) + 1));
+			mult = mult.mul((Math.floor(t / 12) + ((0.3*dt + 10.2)/12))/(Math.floor(t / 12) + 1));
 		}
 	}
 	bilp1.basePps = prodBuilMultLvl.mul("0.0003")
