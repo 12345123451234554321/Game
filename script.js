@@ -1,4 +1,4 @@
-const version = "0.9.0-beta" //изменить!
+const version = "0.9.1-beta" //изменить!
 
 let pens = new Decimal("0");
 let byClick = new Decimal("1");
