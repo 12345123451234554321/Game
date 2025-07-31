@@ -1,4 +1,4 @@
-const version = "0.9.0-beta" //изменить!
+const version = "0.10.0-beta" //изменить!
 
 let pens = new Decimal("0");
 let byClick = new Decimal("1");
@@ -9,6 +9,7 @@ let formLvl = 1;
 let formX = 1;
 let isAffClk = false;
 let isOnClk = true;
+let ascUpgr = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, ]
 
 class Building {
 	constructor(amount, basePrice, n, priceIncreasePerN, basePps, ppsIncreasePerN, priceIncrease) {
@@ -155,6 +156,14 @@ function getForm(lvl) {
 	}
 }
 
+function ascBuy1() {
+	if(ascPts.gte(new Decimal("1")) && ascUpgr[0] === false) {
+		ascPts = ascPts.sub(new Decimal("1"));
+		ascUpgr[0] = true;
+		document.getElementById("ascBtn1").className = "ascUp-buyed";
+	}
+}
+
 function swMain() {
 	document.getElementsByClassName("main")[0].style.display = "block";
 	document.getElementsByClassName("saving")[0].style.display = "none";
@@ -191,7 +200,11 @@ function up1() {
 	};
 }
 
-let savegame = JSON.parse(atob(localStorage.getItem("save")));
+let savegame = 0;
+try {
+	savegame = JSON.parse(atob(localStorage.getItem("save")));
+} catch (error) {}
+
 if (typeof savegame?.bil1amt !== ("undefined" || "null")) {bil1.setAmt(new Decimal(savegame.bil1amt))};
 if (typeof savegame?.bil2amt !== ("undefined" || "null")) {bil2.setAmt(new Decimal(savegame.bil2amt))};
 if (typeof savegame?.bil3amt !== ("undefined" || "null")) {bil3.setAmt(new Decimal(savegame.bil3amt))};
@@ -208,6 +221,7 @@ if (typeof savegame?.bilp5amt !== ("undefined" || "null")) {bilp5.setAmt(new Dec
 if (typeof savegame?.bilp6amt !== ("undefined" || "null")) {bilp6.setAmt(new Decimal(savegame.bilp6amt))};
 if (typeof savegame?.bilp7amt !== ("undefined" || "null")) {bilp7.setAmt(new Decimal(savegame.bilp7amt))};
 if (typeof savegame?.bilp8amt !== ("undefined" || "null")) {bilp8.setAmt(new Decimal(savegame.bilp8amt))};
+if (typeof savegame?.asUpg !== ("undefined" || "null")) {ascUpgr = savegame.asUpg};
 if (typeof savegame?.formLvl !== ("undefined" || "null")) {formLvl = savegame.formLvl};
 if (typeof savegame?.formX !== ("undefined" || "null")) {formX = savegame.formX};
 if (typeof savegame?.up1 !== ("undefined" || "null")) {up1amt = new Decimal(savegame.up1)};
@@ -248,6 +262,16 @@ function getMult() {
 	bilp6.basePps = prodBuilMultLvl.mul("0.0003")
 	bilp7.basePps = prodBuilMultLvl.mul("0.0003")
 	bilp8.basePps = prodBuilMultLvl.mul("0.0003")
+	if (ascUpgr[0]) {
+		bil1.ppsIncreasePerN = new Decimal("2.2");
+		bil2.ppsIncreasePerN = new Decimal("2.2");
+		bil3.ppsIncreasePerN = new Decimal("2.2");
+		bil4.ppsIncreasePerN = new Decimal("2.2");
+		bil5.ppsIncreasePerN = new Decimal("2.2");
+		bil6.ppsIncreasePerN = new Decimal("2.2");
+		bil7.ppsIncreasePerN = new Decimal("2.2");
+		bil8.ppsIncreasePerN = new Decimal("2.2");
+	}
 	return mult;
 }
 
@@ -270,6 +294,16 @@ function getMultOff(dt) {
 	bilp6.basePps = prodBuilMultLvl.mul("0.0003")
 	bilp7.basePps = prodBuilMultLvl.mul("0.0003")
 	bilp8.basePps = prodBuilMultLvl.mul("0.0003")
+	if (ascUpgr[0]) {
+		bil1.ppsIncreasePerN = new Decimal("2.2");
+		bil2.ppsIncreasePerN = new Decimal("2.2");
+		bil3.ppsIncreasePerN = new Decimal("2.2");
+		bil4.ppsIncreasePerN = new Decimal("2.2");
+		bil5.ppsIncreasePerN = new Decimal("2.2");
+		bil6.ppsIncreasePerN = new Decimal("2.2");
+		bil7.ppsIncreasePerN = new Decimal("2.2");
+		bil8.ppsIncreasePerN = new Decimal("2.2");
+	}
 	return mult;
 }
 
@@ -343,7 +377,13 @@ function updateGame(delta_time, total_time) {
 	document.getElementById('up1pr').innerHTML = new Decimal(10).pow(up1amt.add(new Decimal(4))).toStringWithDecimalPlaces(3);
 	document.getElementById('up2amt').innerHTML = prodBuilMultLvl.sub(1).toStringWithDecimalPlaces(3);
 	document.getElementById('up2pr').innerHTML = new Decimal(new Decimal("20000000000").mul(new Decimal("1000").pow(prodBuilMultLvl.sub(1)))).toStringWithDecimalPlaces(3);
-	document.getElementById('ascPts').innerHTML = ascPts.toStringWithDecimalPlaces(3)
+	document.getElementById('ascPts').innerHTML = ascPts.toStringWithDecimalPlaces(3);
+
+	if(ascPts.gte(new Decimal("1")) && ascUpgr[0] === false) {
+		document.getElementById("ascBtn1").className = "ascUp-avail";
+	} else if (ascUpgr[0] === true) {
+		document.getElementById("ascBtn1").className = "ascUp-buyed";
+	}
 }
 
 function updateGameOff(delta_time, total_time) {
@@ -408,7 +448,13 @@ function updateGameOff(delta_time, total_time) {
 	document.getElementById('up1pr').innerHTML = new Decimal(10).pow(up1amt.add(new Decimal(4))).toStringWithDecimalPlaces(3);
 	document.getElementById('up2amt').innerHTML = prodBuilMultLvl.sub(1).toStringWithDecimalPlaces(3);
 	document.getElementById('up2pr').innerHTML = new Decimal(new Decimal("20000000000").mul(new Decimal("1000").pow(prodBuilMultLvl.sub(1)))).toStringWithDecimalPlaces(3);
-	document.getElementById('ascPts').innerHTML = ascPts.toStringWithDecimalPlaces(3)
+	document.getElementById('ascPts').innerHTML = ascPts.toStringWithDecimalPlaces(3);
+
+	if(ascPts.gte(new Decimal("1")) && ascUpgr[0] === false) {
+		document.getElementById("ascBtn1").className = "ascUp-avail";
+	} else if (ascUpgr[0] === true) {
+		document.getElementById("ascBtn1").className = "ascUp-buyed";
+	}
 }
 
 let last_time = null;
@@ -448,6 +494,7 @@ function getSave() {
 		bilp6amt: new Decimal(bilp6.amount).round(),
 		bilp7amt: new Decimal(bilp7.amount).round(),
 		bilp8amt: new Decimal(bilp8.amount).round(),
+		asUpg: ascUpgr,
 		formLvl: formLvl,
 		formX: formX,
 		up1: up1amt,
@@ -483,6 +530,7 @@ function importSave() {
 	if (typeof savegame?.bilp6amt !== ("undefined" || "null")) {bilp6.setAmt(new Decimal(savegame.bilp6amt))};
 	if (typeof savegame?.bilp7amt !== ("undefined" || "null")) {bilp7.setAmt(new Decimal(savegame.bilp7amt))};
 	if (typeof savegame?.bilp8amt !== ("undefined" || "null")) {bilp8.setAmt(new Decimal(savegame.bilp8amt))};
+	if (typeof savegame?.asUpg !== ("undefined" || "null")) {ascUpgr = savegame.asUpg};
 	if (typeof savegame?.formLvl !== ("undefined" || "null")) {formLvl = savegame.formLvl};
 	if (typeof savegame?.formX !== ("undefined" || "null")) {formX = savegame.formX};
 	if (typeof savegame?.up1 !== ("undefined" || "null")) {up1amt = new Decimal(savegame.up1)};
@@ -506,6 +554,7 @@ function wipeButt() {
 		formX = 1;
 		isAffClk = false;
 		isOnClk = true;
+		ascUpgr = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, ];
 		bil1 = new Building(new Decimal("0"), new Decimal("15"), new Decimal("10"), new Decimal("2.1"), new Decimal("0.1"), new Decimal("2"), new Decimal("1.15"))
 		bil2 = new Building(new Decimal("0"), new Decimal("100"), new Decimal("10"), new Decimal("2.1"), new Decimal("1"), new Decimal("2"), new Decimal("1.15"))
 		bil3 = new Building(new Decimal("0"), new Decimal("1000"), new Decimal("10"), new Decimal("2.1"), new Decimal("8"), new Decimal("2"), new Decimal("1.15"))

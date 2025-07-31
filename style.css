@@ -22,3 +22,67 @@ html {
 .offOnClk {
     display: none;
 }
+#ascUpgrades > * {
+    margin: 5px;
+    word-break: break-all;
+    display: inline-block; /* Обеспечиваем корректное позиционирование */
+    vertical-align: top; /* Выравниваем кнопки по верхнему краю */
+    box-sizing: border-box; /* Важно для корректного расчета размеров */
+}
+.ascUp-una,
+.ascUp-avail,
+.ascUp-buyed {
+    box-sizing: border-box; /* Учитываем padding в размерах */
+    white-space: normal; /* Разрешаем переносы строк */
+    overflow: hidden; /* Скрываем контент, выходящий за границы */
+    position: relative; /* Для псевдо-элемента */
+}
+.ascUp-una {
+    height: 116px;
+    width: 171px;
+    border: 1px solid green;
+    border-radius: 10px;
+    color: gray;
+}
+.ascUp-una:hover {
+    height: 116px;
+    width: 171px;
+    border: 1px solid green;
+    border-radius: 10px;
+    background-color: gainsboro;
+    color: gray;
+}
+.ascUp-avail {
+    color: rgb(0, 255, 0);
+    background: black;
+    height: 116px;
+    width: 171px;
+    border: 1px solid green;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 12px 10px green;
+    animation: ascUp-avail alternate infinite 2s ease-out;
+}
+@keyframes ascUp-avail {
+    0% {
+        box-shadow: inset 0px 0px 45px -5px green;
+    }
+    100% {
+        box-shadow: inset 0px 0px 45px 15px green;
+    }
+}
+.ascUp-avail:hover {
+    color: rgb(0, 255, 0);
+    background: green;
+    height: 116px;
+    width: 171px;
+    border: 1px solid green;
+    border-radius: 10px;
+}
+.ascUp-buyed {
+    height: 116px;
+    width: 171px;
+    border: 1px solid green;
+    border-radius: 10px;
+    background-color: lightgreen;
+    color: black;
+}
