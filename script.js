@@ -1,4 +1,4 @@
-const version = "0.10.5-beta" //изменить!
+const version = "0.10.6-beta" //изменить!
 
 let pens = new Decimal("0");
 let byClick = new Decimal("1");
@@ -260,7 +260,7 @@ function ascBuy6() {
 	if(ascPts.gte(new Decimal("10")) && ascUpgr[5] === false) {
 		ascPts = ascPts.sub(new Decimal("10"));
 		ascUpgr[5] = true;
-		document.getElementById("ascBtn5").className = "ascUp-buyed";
+		document.getElementById("ascBtn6").className = "ascUp-buyed";
 	}
 }
 
@@ -268,7 +268,7 @@ function ascBuy7() {
 	if(ascPts.gte(new Decimal("10")) && ascUpgr[6] === false) {
 		ascPts = ascPts.sub(new Decimal("10"));
 		ascUpgr[6] = true;
-		document.getElementById("ascBtn6").className = "ascUp-buyed";
+		document.getElementById("ascBtn7").className = "ascUp-buyed";
 	}
 }
 
@@ -384,14 +384,25 @@ function getMult() {
 		document.getElementsByClassName("offOnClk")[0].style.display = "inline";
 		document.getElementsByClassName("offOnClk")[1].style.display = "inline";
 	}
-	bilp1.basePps = prodBuilMultLvl.mul("0.0003")
-	bilp2.basePps = prodBuilMultLvl.mul("0.0003")
-	bilp3.basePps = prodBuilMultLvl.mul("0.0003")
-	bilp4.basePps = prodBuilMultLvl.mul("0.0003")
-	bilp5.basePps = prodBuilMultLvl.mul("0.0003")
-	bilp6.basePps = prodBuilMultLvl.mul("0.0003")
-	bilp7.basePps = prodBuilMultLvl.mul("0.0003")
-	bilp8.basePps = prodBuilMultLvl.mul("0.0003")
+	if(!ascUpgr[3]) {
+		bilp1.basePps = prodBuilMultLvl.mul("0.0003")
+		bilp2.basePps = prodBuilMultLvl.mul("0.0003")
+		bilp3.basePps = prodBuilMultLvl.mul("0.0003")
+		bilp4.basePps = prodBuilMultLvl.mul("0.0003")
+		bilp5.basePps = prodBuilMultLvl.mul("0.0003")
+		bilp6.basePps = prodBuilMultLvl.mul("0.0003")
+		bilp7.basePps = prodBuilMultLvl.mul("0.0003")
+		bilp8.basePps = prodBuilMultLvl.mul("0.0003")
+	} else {
+		bilp1.basePps = prodBuilMultLvl.mul("0.0003").add("0.0015")
+		bilp2.basePps = prodBuilMultLvl.mul("0.0003").add("0.0015")
+		bilp3.basePps = prodBuilMultLvl.mul("0.0003").add("0.0015")
+		bilp4.basePps = prodBuilMultLvl.mul("0.0003").add("0.0015")
+		bilp5.basePps = prodBuilMultLvl.mul("0.0003").add("0.0015")
+		bilp6.basePps = prodBuilMultLvl.mul("0.0003").add("0.0015")
+		bilp7.basePps = prodBuilMultLvl.mul("0.0003").add("0.0015")
+		bilp8.basePps = prodBuilMultLvl.mul("0.0003").add("0.0015")
+	}
 	if (ascUpgr[0]) {
 		bil1.ppsIncreasePerN = new Decimal("2.2");
 		bil2.ppsIncreasePerN = new Decimal("2.2");
