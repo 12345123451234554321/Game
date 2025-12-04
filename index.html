@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<nav>
-			У вас ручек: <span id="mainCnt"></span>
+			У вас ручек: <span id="mainCnt"></span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span id="penalty"></span>
 			<br>
 			Вы получаете <span id="mainPs"></span> ручек в секунду
 			<br>
@@ -107,7 +107,13 @@
 			<hr>
 			<h2>Улучшения восхождений</h2>
 			<div id="ascUpgrades">
-				<button id="ascBtn1" class="ascUp-una" onclick="ascBuy1();">Увеличить мноитель к производству за покупку 10 построек (2x -> 2.2x)<br>Цена: 1</button>
+				<button id="ascBtn1" class="ascUp-una" onclick="ascBuy1();">Увеличить множитель к производству за покупку 10 построек (2x -> 2,2x)<br>Цена: 1</button>
+				<button id="ascBtn2" class="ascUp-una" onclick="ascBuy2();">Уменьшить необходимое количество построек для бонуса эффективности (10 -> 9)<br>Цена: 1</button>
+				<button id="ascBtn3" class="ascUp-una" onclick="ascBuy3();">Увеличить максимальный множитель часового улучшения (1,15x -> 1,30x)<br>Цена: 1</button>
+				<button id="ascBtn4" class="ascUp-una" onclick="ascBuy4();">Увеличить базовое производство производств построек (0,0003 п/с -> 0,0015 п/с)<br>Цена: 2</button>
+				<button id="ascBtn5" class="ascUp-una" onclick="ascBuy5();">Улучшить формулу цены переменной x в формуле ручек за клик (2<sup>x</sup> -> 1,5<sup>x</sup>)<br>Цена: 4</button>
+				<button id="ascBtn6" class="ascUp-una" onclick="ascBuy6();">Начинать восхождение с 10 производствами построек всех видов<br>Цена: 10</button>
+				<button id="ascBtn7" class="ascUp-una" onclick="ascBuy7();">Начинать восхождение с 20 фермами<br>Цена: 10</button>
 			</div>
 		</div>
 		<script src="./break_eternity.js-master/break_eternity.js"></script>

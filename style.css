@@ -24,7 +24,6 @@ html {
 }
 #ascUpgrades > * {
     margin: 5px;
-    word-break: break-all;
     display: inline-block; /* Обеспечиваем корректное позиционирование */
     vertical-align: top; /* Выравниваем кнопки по верхнему краю */
     box-sizing: border-box; /* Важно для корректного расчета размеров */
