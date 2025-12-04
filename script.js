@@ -1,4 +1,4 @@
-const version = "0.11.0-beta" //изменить!
+const version = "0.10.5-beta" //изменить!
 
 let pens = new Decimal("0");
 let byClick = new Decimal("1");
@@ -338,7 +338,7 @@ if (typeof savegame?.onClk !== ("undefined" || "null")) {isOnClk = savegame.onCl
 if (typeof savegame?.pbml !== ("undefined" || "null")) {prodBuilMultLvl = new Decimal(savegame.pbml)};
 if (typeof savegame?.ascP !== ("undefined" || "null")) {ascPts = new Decimal(savegame.ascP)};
 if (typeof savegame?.pens !== ("undefined" || "null")) {pens = new Decimal(savegame.pens)};
-if (typeof savegame?.saveTime !== ("undefined" || "null")) {updateGameOff(Date.now() - savegame.saveTime)};
+if (typeof savegame?.saveTime !== ("undefined" || "null")) {updateGame(Date.now() - savegame.saveTime)};
 
 function getMult() {
 	let mult = new Decimal("1");
@@ -418,7 +418,7 @@ function getMult() {
 	return mult;
 }
 
-function getMultOff(dt) {
+/* function getMultOff(dt) {
 	let mult = new Decimal("1");
 	mult = mult.mul(new Decimal(2).pow(up1amt));
 	if (isAffClk) {
@@ -448,11 +448,11 @@ function getMultOff(dt) {
 		bil8.ppsIncreasePerN = new Decimal("2.2");
 	}
 	return mult;
-}
+} */
 
-function calcPensOff(delta_time) {
+/* function calcPensOff(delta_time) {
 	return ((bil1.ppms().mul(delta_time)).add(bil2.ppms().mul(delta_time)).add(bil3.ppms().mul(delta_time)).add(bil4.ppms().mul(delta_time)).add(bil5.ppms().mul(delta_time)).add(bil6.ppms().mul(delta_time)).add(bil7.ppms().mul(delta_time)).add(bil8.ppms().mul(delta_time))).mul(getMultOff(delta_time))
-}
+} */
 
 function calcPens(delta_time) {
 	return ((bil1.ppms().mul(delta_time)).add(bil2.ppms().mul(delta_time)).add(bil3.ppms().mul(delta_time)).add(bil4.ppms().mul(delta_time)).add(bil5.ppms().mul(delta_time)).add(bil6.ppms().mul(delta_time)).add(bil7.ppms().mul(delta_time)).add(bil8.ppms().mul(delta_time))).mul(getMult())
@@ -568,7 +568,7 @@ function updateGame(delta_time, total_time) {
 	}
 }
 
-function updateGameOff(delta_time, total_time) {
+/* function updateGameOff(delta_time, total_time) {
 	pens = Decimal.add(pens, calcPens(delta_time));
 	pps = bil1.pps().add(bil2.pps().add(bil3.pps().add(bil4.pps().add(bil5.pps().add(bil6.pps().add(bil7.pps().add(bil8.pps()))))))).mul(getMultOff());
 	pps2 = bilp1.pps().mul(bil1.ppsB().mul(getMultOff())).add(bilp2.pps().mul(bil2.ppsB().mul(getMultOff())).add(bilp3.pps().mul(bil3.ppsB().mul(getMultOff()))).add(bilp4.pps().mul(bil4.ppsB().mul(getMultOff()))).add(bilp5.pps().mul(bil5.ppsB().mul(getMultOff()))).add(bilp6.pps().mul(bil6.ppsB().mul(getMultOff()))).add(bilp7.pps().mul(bil7.ppsB().mul(getMultOff()))).add(bilp8.pps().mul(bil8.ppsB().mul(getMultOff()))))
@@ -637,7 +637,7 @@ function updateGameOff(delta_time, total_time) {
 	} else if (ascUpgr[0] === true) {
 		document.getElementById("ascBtn1").className = "ascUp-buyed";
 	}
-}
+} */
 
 let last_time = null;
 let total_time = 0;
@@ -721,7 +721,7 @@ function importSave() {
 	if (typeof savegame?.pbml !== ("undefined" || "null")) {prodBuilMultLvl = new Decimal(savegame.pbml)};
 	if (typeof savegame?.ascP !== ("undefined" || "null")) {ascPts = new Decimal(savegame.ascP)};
 	if (typeof savegame?.pens !== ("undefined" || "null")) {pens = new Decimal(savegame.pens)};
-	if (typeof savegame?.saveTime !== ("undefined" || "null")) {updateGameOff(Date.now() - savegame.saveTime)};
+	if (typeof savegame?.saveTime !== ("undefined" || "null")) {updateGame(Date.now() - savegame.saveTime)};
 }
 
 function wipeButt() {
