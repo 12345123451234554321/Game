@@ -1,4 +1,4 @@
-const version = "0.10.11-beta" //изменить!
+const version = "0.10.12-beta" //изменить!
 
 let pens = new Decimal("0");
 let byClick = new Decimal("1");
@@ -567,7 +567,12 @@ function updateGame(delta_time, total_time) {
 	document.getElementById('up1amt').innerHTML = up1amt.toStringWithDecimalPlaces(3);
 	document.getElementById('up1pr').innerHTML = new Decimal(10).pow(up1amt.add(new Decimal(4))).toStringWithDecimalPlaces(3);
 	document.getElementById('up2amt').innerHTML = prodBuilMultLvl.sub(1).toStringWithDecimalPlaces(3);
-	document.getElementById('up2pr').innerHTML = new Decimal(new Decimal("20000000000").mul(new Decimal("1000").pow(prodBuilMultLvl.sub(1)))).toStringWithDecimalPlaces(3);
+	if(prodBuilMultLvl < 36) {
+		document.getElementById('up2pr').innerHTML = new Decimal(new Decimal("20000000000").mul(new Decimal("700").pow(prodBuilMultLvl.sub(1))));
+	}
+	else {
+		document.getElementById('up2pr').innerHTML = new Decimal("1.72").pow(prodBuilMultLvl.pow(new Decimal("1.72")));
+	}
 	document.getElementById('ascPts').innerHTML = ascPts.toStringWithDecimalPlaces(3);
 
 	if(ascPts.gte(new Decimal("1")) && ascUpgr[0] === false) {
@@ -783,7 +788,7 @@ function wipeButt() {
 		formX = 1;
 		isAffClk = false;
 		isOnClk = true;
-		ascUpgr = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, ];
+		ascUpgr = [false, false, false, false, false, false, false, 0];
 		bil1 = new Building(new Decimal("0"), new Decimal("15"), new Decimal("10"), new Decimal("2.1"), new Decimal("0.1"), new Decimal("2"), new Decimal("1.15"))
 		bil2 = new Building(new Decimal("0"), new Decimal("100"), new Decimal("10"), new Decimal("2.1"), new Decimal("1"), new Decimal("2"), new Decimal("1.15"))
 		bil3 = new Building(new Decimal("0"), new Decimal("1000"), new Decimal("10"), new Decimal("2.1"), new Decimal("8"), new Decimal("2"), new Decimal("1.15"))
