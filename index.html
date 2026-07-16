@@ -30,53 +30,60 @@
 			Уровень формулы ручек за клик: <span id="formulLvl"></span>. <span id="formu1"> Цена улучшения: <span id="formulLvlp"></span> ручек.</span> Формула ручек за клик: <span id="formul"></span> <div id="formu2"><button onclick="formUpgrade()">Улучшить формулу ручек за клик</button></div>
 			<hr>
 			<h2>Постройки</h2>
-			У вас рук: <span id="am1"></span>. Цена руки: <span id="pr1"></span> ручек. <button onclick="bil1.buy()">Купить руку</button>
-			<br>
-			<br>
-			У вас бабушек: <span id="am2"></span>. Цена бабушки: <span id="pr2"></span> ручек. <button onclick="bil2.buy()">Купить бабушку</button>
-			<br>
-			<br>
-			У вас цехов: <span id="am3"></span>. Цена цеха: <span id="pr3"></span> ручек. <button onclick="bil3.buy()">Купить цех</button>
-			<br>
-			<br>
-			У вас фабрик: <span id="am4"></span>. Цена фабрики: <span id="pr4"></span> ручек. <button onclick="bil4.buy()">Купить фабрику</button>
-			<br>
-			<br>
-			У вас нефтяных вышек: <span id="am5"></span>. Цена нефтяной вышки: <span id="pr5"></span> ручек. <button onclick="bil5.buy()">Купить нефтяную вышку</button>
-			<br>
-			<br>
-			У вас танкеров: <span id="am6"></span>. Цена танкера: <span id="pr6"></span> ручек. <button onclick="bil6.buy()">Купить танкер</button>
-			<br>
-			<br>
-			У вас прудов: <span id="am7"></span>. Цена пруда: <span id="pr7"></span> ручек. <button onclick="bil7.buy()">Купить пруд</button>
-			<br>
-			<br>
-			У вас ферм: <span id="am8"></span>. Цена фермы: <span id="pr8"></span> ручек. <button onclick="bil8.buy()">Купить ферму</button>
-			<hr>
+			<div id="bils">
+				<div class="bils">
+					У вас рук: <span id="am1"></span>. Цена руки: <span id="pr1"></span> ручек. <button onclick="bil1.buy()">Купить руку</button>
+				</div>
+				<div class="bils">
+					У вас бабушек: <span id="am2"></span>. Цена бабушки: <span id="pr2"></span> ручек. <button onclick="bil2.buy()">Купить бабушку</button>
+				</div>
+				<div class="bils">
+					У вас цехов: <span id="am3"></span>. Цена цеха: <span id="pr3"></span> ручек. <button onclick="bil3.buy()">Купить цех</button>
+				</div>
+				<div class="bils">
+					У вас фабрик: <span id="am4"></span>. Цена фабрики: <span id="pr4"></span> ручек. <button onclick="bil4.buy()">Купить фабрику</button>
+				</div>
+				<div class="bils">
+					У вас нефтяных вышек: <span id="am5"></span>. Цена нефтяной вышки: <span id="pr5"></span> ручек. <button onclick="bil5.buy()">Купить нефтяную вышку</button>
+				</div>
+				<div class="bils">
+					У вас танкеров: <span id="am6"></span>. Цена танкера: <span id="pr6"></span> ручек. <button onclick="bil6.buy()">Купить танкер</button>
+				</div>
+				<div class="bils">
+					У вас прудов: <span id="am7"></span>. Цена пруда: <span id="pr7"></span> ручек. <button onclick="bil7.buy()">Купить пруд</button>
+				</div>
+				<div class="bils">
+					У вас ферм: <span id="am8"></span>. Цена фермы: <span id="pr8"></span> ручек. <button onclick="bil8.buy()">Купить ферму</button>
+				</div>
+				<hr>
+			</div>
 			<h2>Производство построек</h2>
-			У вас производств рук: <span id="amp1"></span>. Цена производства рук: <span id="prp1"></span> ручек. <button onclick="bilp1.buy()">Купить производство руки</button>
-			<br>
-			<br>
-			У вас производств бабушек: <span id="amp2"></span>. Цена производства курсоров: <span id="prp2"></span> ручек. <button onclick="bilp2.buy()">Купить производство бабушек</button>
-			<br>
-			<br>
-			У вас производств цехов: <span id="amp3"></span>. Цена производства цехов: <span id="prp3"></span> ручек. <button onclick="bilp3.buy()">Купить производство цехов</button>
-			<br>
-			<br>
-			У вас производств фабрик: <span id="amp4"></span>. Цена производства фабрик: <span id="prp4"></span> ручек. <button onclick="bilp4.buy()">Купить производство фабрик</button>
-			<br>
-			<br>
-			У вас производств нефтяных вышек: <span id="amp5"></span>. Цена производства нефтяных вышек: <span id="prp5"></span> ручек. <button onclick="bilp5.buy()">Купить производство нефтяных вышек</button>
-			<br>
-			<br>
-			У вас производств танкеров: <span id="amp6"></span>. Цена производства танкеров: <span id="prp6"></span> ручек. <button onclick="bilp6.buy()">Купить производство танкеров</button>
-			<br>
-			<br>
-			У вас производств прудов: <span id="amp7"></span>. Цена производства прудов: <span id="prp7"></span> ручек. <button onclick="bilp7.buy()">Купить производство прудов</button>
-			<br>
-			<br>
-			У вас производств ферм: <span id="amp8"></span>. Цена производства ферм: <span id="prp8"></span> ручек. <button onclick="bilp8.buy()">Купить производство ферм</button>
-
+			<div id="bilps">
+				<div class="bilps">
+					У вас производств рук: <span id="amp1"></span>. Цена производства рук: <span id="prp1"></span> ручек. <button onclick="bilp1.buy()">Купить производство руки</button>
+				</div>
+				<div class="bilps">
+					У вас производств бабушек: <span id="amp2"></span>. Цена производства курсоров: <span id="prp2"></span> ручек. <button onclick="bilp2.buy()">Купить производство бабушек</button>
+				</div>
+				<div class="bilps">
+					У вас производств цехов: <span id="amp3"></span>. Цена производства цехов: <span id="prp3"></span> ручек. <button onclick="bilp3.buy()">Купить производство цехов</button>
+				</div>
+				<div class="bilps">
+					У вас производств фабрик: <span id="amp4"></span>. Цена производства фабрик: <span id="prp4"></span> ручек. <button onclick="bilp4.buy()">Купить производство фабрик</button>
+				</div>
+				<div class="bilps">
+					У вас производств нефтяных вышек: <span id="amp5"></span>. Цена производства нефтяных вышек: <span id="prp5"></span> ручек. <button onclick="bilp5.buy()">Купить производство нефтяных вышек</button>
+				</div>
+				<div class="bilps">
+					У вас производств танкеров: <span id="amp6"></span>. Цена производства танкеров: <span id="prp6"></span> ручек. <button onclick="bilp6.buy()">Купить производство танкеров</button>
+				</div>
+				<div class="bilps">
+					У вас производств прудов: <span id="amp7"></span>. Цена производства прудов: <span id="prp7"></span> ручек. <button onclick="bilp7.buy()">Купить производство прудов</button>
+				</div>
+				<div class="bilps">
+					У вас производств ферм: <span id="amp8"></span>. Цена производства ферм: <span id="prp8"></span> ручек. <button onclick="bilp8.buy()">Купить производство ферм</button>
+				</div>
+			</div>
 		</div>
 		<div class="saving">
 			Введите сохранение:<input type="text" name="saveIn" id="saveIn"><input type="button" value="Импортировать" onclick="importSave()">
@@ -103,7 +110,7 @@
 		<div class="ascensions">
 			У вас очков восхождения: <span id="ascPts"></span>
 			<br>
-			Для восхождения нужно 1e100 ручек. <input type="button" value="Восхождение" onclick="ascend()">
+			Для восхождения нужно 1e100 ручек. <input type="button" value="Восхождение" onclick="ascend()"><!-- <span id="unlocke100">Разблокировать <button onclick="e100unlock();">Цена: 20</button></span> -->
 			<hr>
 			<h2>Улучшения восхождений</h2>
 			<div id="ascUpgrades">
@@ -114,6 +121,7 @@
 				<button id="ascBtn5" class="ascUp-una" onclick="ascBuy5();">Улучшить формулу цены переменной x в формуле ручек за клик (2<sup>x</sup> -> 1,5<sup>x</sup>)<br>Цена: 4</button>
 				<button id="ascBtn6" class="ascUp-una" onclick="ascBuy6();">Начинать восхождение с 10 производствами построек всех видов<br>Цена: 10</button>
 				<button id="ascBtn7" class="ascUp-una" onclick="ascBuy7();">Начинать восхождение с 20 фермами<br>Цена: 10</button>
+				<!--<button id="ascBtn8" class="ascUp-una" onclick="ascBuy8();">Поднять границу применения штрафа<br>Цена: 20</button>-->
 			</div>
 		</div>
 		<script src="./break_eternity.js-master/break_eternity.js"></script>

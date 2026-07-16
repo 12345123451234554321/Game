@@ -85,3 +85,42 @@ html {
     background-color: lightgreen;
     color: black;
 }
+.bils:first-child {
+    border-radius: 15px 15px 0 0;
+}
+.bils:last-of-type {
+    border-radius: 0 0 15px 15px;
+}
+.bils:nth-child(odd) {
+    background-color: deepskyblue;
+    padding: 10px;
+    margin: 0px;
+    border: 1px solid black;
+}
+.bils:nth-child(even) {
+    background-color: skyblue;
+    padding: 10px;
+    margin: 0px;
+    border: 1px solid black;
+}
+.bils + .bils {margin: -1px 0;}
+
+.bilps:first-child {
+    border-radius: 15px 15px 0 0;
+}
+.bilps:last-of-type {
+    border-radius: 0 0 15px 15px;
+}
+.bilps:nth-child(odd) {
+    background-color: lime;
+    padding: 10px;
+    margin: 0px;
+    border: 1px solid black;
+}
+.bilps:nth-child(even) {
+    background-color: palegreen;
+    padding: 10px;
+    margin: 0px;
+    border: 1px solid black;
+}
+.bilps + .bilps {margin: -1px 0;}
